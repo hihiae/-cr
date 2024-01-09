@@ -1,27 +1,20 @@
 ---------Code: TranVanPhuong-------------
 Kaitun = false
 if Kaitun then
-    repeat wait() until game:IsLoaded()
-    getgenv().Setting = {
-    ["John Team"] = "Pirate",
-
-    ["Auto_Farm_Level"] = true,
-    ["Double_Quest"] = true,
-    ["Auto_Saber"] = true,
-    ["Auto_Bone"] = true,
-    ["BringMonster"] = true,
-    ["FastAttack"] = true,
-    ["AutoBuyLegendarySword"] = true,
-    ["Start_Kaitan"] = true,
-    ["AutoSuperhuman"] = true,
-	["AutoDeathStep"] = true,
-	["AutoSharkman"] = true,
-	["AutoElectricClaw"] = true,
-	["AutoDragonTalon"] = true,
-	["AutoFullySuperhuman"] = true,
-	["Fast_Farm_Level"] = true,
-
-}
+    _G.Auto_Farm_Level = true
+    _G.Double_Quest = true
+    _G.Auto_Saber = true
+    _G.BringMonster = true
+    _G.FastAttack = true
+    _G.AutoBuyLegendarySword = true 
+    _G.Start_Kaitan = true
+    _G.AutoSuperhuman = true
+    _G.AutoDeathStep = true
+    _G.AutoSharkman = true
+    _G.AutoElectricClaw = true 
+    _G.AutoDragonTalon = true
+    _G.AutoFullySuperhuman = true 
+    _G.Fast_Farm_Level = true
 end
 
 repeat
