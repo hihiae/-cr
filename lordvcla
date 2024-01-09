@@ -3,7 +3,7 @@ Kaitun = false
 if Kaitun then
     repeat wait() until game:IsLoaded()
     getgenv().Setting = {
-    ["John Team"] = "Pirates",
+    ["John Team"] = "Pirate",
 
     ["Auto_Farm_Level"] = true,
     ["Double_Quest"] = true,
@@ -28,11 +28,11 @@ repeat
     pcall(
         function()
             task.wait()
-            if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main"):FindFir
+            if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main"):FindFirstChild("ChooseTeam") then
                 if string.find(tostring(h["Team"]), "Pirate") then
                     for r, v in pairs(
                         getconnections(
-                            game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam
+                            game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.Viewpo
                         )
                     ) do
                         v.Function()
@@ -40,7 +40,7 @@ repeat
                 elseif string.find(tostring(h["Team"]), "Marine") then
                     for r, v in pairs(
                         getconnections(
-                            game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam
+                            game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.Viewpo
                         )
                     ) do
                         v.Function()
@@ -56,43 +56,6 @@ repeat
     )
 until game.Players.LocalPlayer.Team ~= nil
 w(1)
-local decalsyeeted = true
-local g = game
-local w = g.Workspace
-local l = g.Lighting
-local t = w.Terrain
-t.WaterWaveSize = 0
-t.WaterWaveSpeed = 0
-t.WaterReflectane = 0
-t.WaterTransparency = 0
-l.GlobalShadows = false
-l.FogEnd = 9e9
-l.Brightness = 0
-setting().Rendering.QualityLevel = "Level01"
-for i, v in pairs(g:Descendants()) do
-    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-        v.Material = "Plastic"
-        v.Reflectance = 0
-    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
-        v.Transparency = 1
-    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-        v.Lifetime = NumberRange.new(0)
-    elseif v:IsA("Explosion") then
-        v.BlastPressure = 1
-        v.BlastRadius = 1
-    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
-        v.Enabled = false
-    elseif v:IsA("MeshPart") then
-        v.Material = "Plastic"
-        v.Reflectance = 0
-        v.TextureID = 10385902758728957
-    end
-end
-for i, v in pairs(l:GetChildren()) do
-    if e:IsA("BlurEffect") or e:IsA("SunRayEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect")  then 
-        e.Enabled = false
-    end
-end
 
 ---Farm Level---
 local placeId = game.PlaceId
@@ -104,7 +67,7 @@ elseif placeId == 7449423635 then
     ThreeWorld = true
 end
 function CheckQuest() 
-    MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
+    local MyLevel = game.Players.LocalPlayer.Data.Level.Value
     if World1 then
         if MyLevel == 1 or MyLevel <= 9 then
             Mon = "Bandit"
@@ -822,11 +785,11 @@ function topos(Pos)
     if Distance < 250 then
         Speed = 600
     elseif Distance < 500 then
-        Speed = 400
+        Speed = 300
     elseif Distance < 750 then
-        Speed = 280
-    elseif Distance >= 1000 then
         Speed = 250
+    elseif Distance >= 1000 then
+        Speed = 200
     end
     game:GetService("TweenService"):Create(game:GetService("Players").LocalPLayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),{
         CFrame = Pos
