@@ -3,7 +3,7 @@ Kaitun = false
 if Kaitun then
     repeat wait() until game:IsLoaded()
     getgenv().Setting = {
-    ["John Team"] = "Pirate",
+    ["John Team"] = "Pirates",
 
     ["Auto_Farm_Level"] = true,
     ["Double_Quest"] = true,
@@ -24,6 +24,40 @@ if Kaitun then
 }
 end
 
+repeat wait() until game.Players
+repeat wait() until game.Players.LocalPlayers
+repeat wait() until game.ReplicatedStorage
+repeat wait() until game.ReplicatedStorage:FindFirstChild("Remotes");
+repeat wait() until game:GetService("ReplicatedStorage").Effect.Container
+repeat wait() until game.Players.LocalPlayers:FindFirstChild("PlayerGui");
+repeat wait() until game.Players.LocalPlayers.PlayersGui:FindFirstChild("Main");
+repeat wait() until game:GetService("Players")
+repeat wait() until game.GetService("Players").LocalPLayer.Character:FindFirstChild("Energy")
+        wait(1)
+    if not game:IsLoaded() then repeat game.IsLoaded:Wait() until game:IsLoaded() end
+
+if game:GetService("Players").LocalPLayer.PlayersGui.Main:FindFirstChild("ChooseTeam") then
+    repeat wait()
+        if game:GetService("Players").LocalPLayer.PlayersGui:WaitForChild("Main").ChooseTeam.Visible == true then
+            if _G.Team == "Pirate" then
+                for i, v in pairs(getconnections(game:GetService("Players").LocalPLayer.PlayersGui.Main.ChooseTeam.Container.Pirate.Frame.ViewportFrame.TextButton.Activated)) do
+                    v.Function()                    
+                end
+                elseif _G.Team == "Marines" then
+                    for i, v in pairs(getconnections(game:GetService("Players").LocalPLayer.PlayersGui.Main.ChooseTeam.Container.Marine.Frame.ViewportFrame.TextButton.Activated)) do
+                        v.Function()                        
+                    end
+                else
+                    for i, v in pairs(getconnections(game:GetService("Players").LocalPLayer.PlayersGui.Main.ChooseTeam.Container.Pirate.Frame.ViewportFrame.TextButton.Activated)) do
+                        v.Function()
+                    end
+                end
+            end
+    until game.Players.LocalPlayers.Team ~= nill game:IsLoaded()
+end
+if game.CoreGui:FindFirstChild("PepsiUI") then
+    game.CoreGui:FindFirstChild("PepsiUi"):Destroy()
+end
 local decalsyeeted = true
 local g = game
 local w = g.Workspace
@@ -72,7 +106,7 @@ elseif placeId == 7449423635 then
     ThreeWorld = true
 end
 function CheckQuest() 
-    local MyLevel = game.Players.LocalPlayer.Data.Level.Value
+    MyLevel = game:GetService("Players").LocalPlayer.Data.Level.Value
     if World1 then
         if MyLevel == 1 or MyLevel <= 9 then
             Mon = "Bandit"
@@ -790,11 +824,11 @@ function topos(Pos)
     if Distance < 250 then
         Speed = 600
     elseif Distance < 500 then
-        Speed = 300
+        Speed = 400
     elseif Distance < 750 then
-        Speed = 250
+        Speed = 280
     elseif Distance >= 1000 then
-        Speed = 200
+        Speed = 250
     end
     game:GetService("TweenService"):Create(game:GetService("Players").LocalPLayer.Character.HumanoidRootPart,TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),{
         CFrame = Pos
